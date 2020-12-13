@@ -1,4 +1,3 @@
-
 alpha_ru = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
 alpha_en = 'abcdefghiklmnopqrstvxyzABCDEFGHIKLMNOPQRSTVXYZ'
 
@@ -15,7 +14,6 @@ def normalization(text):
     text = text.replace('!', ' ')
     text = text.replace(':', '')
     text = text.split(' ')
-    # print(text)
     return text
 
 
@@ -27,7 +25,6 @@ def definition_ru(text):
             if char in alpha_ru and char not in alpha_en and len(word_ru) > 4 and word_ru not in output_ru:
                 output_ru.append(word_ru)
 
-    # print(output_ru)
     return output_ru
 
 
@@ -38,7 +35,7 @@ def definition_en(text):  # определение слов на английс�
         for char in word_en:
             if char in alpha_en and char not in alpha_ru and word_en not in output_en:
                 output_en.append(word_en)
-    # print(output_en)
+
     return output_en
 
 
@@ -55,7 +52,7 @@ def sort_ru(datas_ru, data_norm):  # сортировка слов на русс
     data_ru = (data_ru[::-1])
     sort_data_ru = (data_ru[0:3])
     dict_data_ru = dict(sort_data_ru)
-    print(dict_data_ru)
+
     return dict_data_ru
 
 
@@ -70,7 +67,6 @@ def sort_en(datas_en):  # сортировка слов на русском яз
     sort_data_en = max(data_en, key=lambda x: x[1])
     sort_data_en = list(sort_data_en)
     dict_data_en = dict([sort_data_en])
-    # print(dict_data_en)
 
     return dict_data_en
 
