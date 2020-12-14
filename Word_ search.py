@@ -65,31 +65,30 @@ def sort_en(datas_en):  # сортировка слов на русском яз
             data_en.append(data_wen)
 
     sort_data_en = max(data_en, key=lambda x: x[1])
-    sort_data_en = list(sort_data_en)
     dict_data_en = dict([sort_data_en])
 
     return dict_data_en
 
 
 def main():
-    MyFile_01 = open(r'file_input_ru_en.txt', 'r', encoding='UTF8')  # открытие файла
-    words = MyFile_01.read()  # чтение текста
+    file_01 = open(r'file_input_ru_en.txt', 'r', encoding='UTF8')  # открытие файла
+    words = file_01.read()  # чтение текста
     words_norm = normalization(words)  # удаление лишних знаков и создание предварительного списка
     words_ru = definition_ru(words_norm)  # фильтрация слов на русском языке
     words_en = definition_en(words_norm)  # фильтрация слов на английском языке
     list_en = sort_en(words_en)
     list_ru = sort_ru(words_ru, words_norm)  # фильтрация русских слов по условию и создание словаря
 
-    MyFile_02 = open('output.txt', 'w', encoding='UTF8')  # запись полученного словаря в новый файл
-    MyFile_02.write(f'В тексте на русском языке три наиболее часто встречающихся слова:\n')
+    file_02 = open('output.txt', 'w', encoding='UTF8')  # запись полученного словаря в новый файл
+    file_02.write(f'В тексте на русском языке три наиболее часто встречающихся слова:\n')
     for key, value in list_ru.items():
-        MyFile_02.write(f'Слово "{key}" встречается {value} раз\n')
-    MyFile_02.write(f'\nВ тексте на английском языке:\n')
+        file_02.write(f'Слово "{key}" встречается {value} раз\n')
+    file_02.write(f'\nВ тексте на английском языке:\n')
     for key, value in list_en.items():
-        MyFile_02.write(f'Самое длинное слово "{key}" имеет {value} букв\n')
+        file_02.write(f'Самое длинное слово "{key}" имеет {value} букв\n')
 
-    MyFile_02.close()  # закрытие файлов
-    MyFile_01.close()
+    file_02.close()  # закрытие файлов
+    file_01.close()
 
 
 if __name__ == '__main__':
